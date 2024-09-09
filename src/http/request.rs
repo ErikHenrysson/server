@@ -1,7 +1,7 @@
 use super::method::{Method, MethodError};
 use std::path::{self, Path};
 use std::str::Utf8Error;
-use core::str;
+use core::{fmt, str};
 use std::convert::TryFrom;
 use std::error::Error;
 use std::fmt::{write, Debug, Display, Formatter, Result as FmtResult};
@@ -13,6 +13,20 @@ pub struct Request<'buf>{
     path: &'buf str,
     query_string: Option<QueryString<'buf>>,
     method: Method,
+}
+
+impl<'buf> Request <'buf>{
+    pub fn path(&self) -> &str {
+        &self.path
+    }
+
+    pub fn method(&self) -> &Method {
+        &self.method
+    }
+
+    pub fn query_string(&self)-> Option<&QueryString> {
+        self.query_string.as_ref()
+    }
 }
 
 
