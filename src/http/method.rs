@@ -1,4 +1,7 @@
 use std::str::FromStr;
+
+
+// Enumerations of all the possible request methods
 #[derive(Debug)]
 pub enum Method{
     GET,
@@ -12,6 +15,9 @@ pub enum Method{
     PATCH,
 }
 
+// Implementation of FromStr for method. 
+// Converts a &str to Method
+// Returns a result with a Method if a valid method is given. Otherwise it returns an error (MethodError) 
 impl FromStr for Method {
     type Err = MethodError;
 
